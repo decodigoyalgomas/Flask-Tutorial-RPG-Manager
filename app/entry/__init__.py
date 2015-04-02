@@ -10,9 +10,9 @@ def login():
 	form = LoginForm()
 
 	if form.validate_on_submit():
-		flash("Has hecho login con el user: {}".format(form.user.data))
+		flash("Has hecho login con el user: {}".format(form.username.data))
 		print "validated"
-		return redirect(url_for("index"))
+		return redirect(url_for("manager.index"))
 	else:
 		print "not validated"
 		flash("Failed to login")
