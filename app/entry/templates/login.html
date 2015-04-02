@@ -19,13 +19,13 @@
 	{{ form.hidden_tag() }}
     <div>{{ form.username.label(class="columns small-6") }}: 
     {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="error">[{{ error }}]</span>
           {% endfor %}<br>
     {{ form.username(class="columns small-6") }}
     </div>
     <div>{{ form.password.label(class="columns small-6") }}: 
     {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="error">[{{ error }}]</span>
           {% endfor %}<br>
     {{ form.password(class="columns small-6") }}</div>
     <div class="columns small-6">{{ form.submit}}</div>

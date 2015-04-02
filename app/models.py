@@ -7,11 +7,10 @@ db = Database()
 
 class User(db.Entity):
     id = PrimaryKey(int, auto=True)
-    email = Required(unicode)
+    email = Required(unicode, unique=True)
     password = Required(unicode)
     name = Required(unicode)
     nickname = Optional(unicode)
-    role = Required(unicode)
     parties = Set("Party")
     sessions = Set("Session")
     characters = Set("Character")

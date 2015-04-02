@@ -1,0 +1,62 @@
+{% extends "foundation/base.html" %}
+
+
+{% block title %}{{ title }}{% endblock title%}
+{% block content %}
+
+<section class="row">
+<div class="small-12 columns error">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li class="error">{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+</div>
+
+
+
+    <form method="POST" action="{{url_for('entry.register')}}">
+    	{{ form.hidden_tag() }}
+        <div class="small-12 medium-6 columns">
+            {% for error in form.name.errors %}
+                <span class=" small-12 medium-6 columns error">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.name.label }} {{form.name}}
+        </div>
+        <div class="small-12 medium-6 columns">
+            {% for error in form.username.errors %}
+                <span class=" small-12 medium-6 columns error">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.username.label }} {{form.username}}
+        </div>
+        <div class="small-12 medium-6 columns">
+            {% for error in form.password.errors %}
+                <span class=" small-12 medium-6 columns error">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.password.label }} {{form.password}}
+        </div>
+        <div class="small-12 medium-6 columns">
+            {% for error in form.confirm.errors %}
+                <span class=" small-12 medium-6 columns error">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.confirm.label }} {{form.confirm}}
+        </div>
+        <div class="small-12 medium-6 columns ">
+            {% for error in form.email.errors %}
+                <span class=" small-12 medium-6 columns error">[{{ error }}]</span>
+            {% endfor %}
+            {{ form.email.label }} {{form.email}}
+        </div>
+        <div class="small-12 medium-1 left columns button">
+            {{ form.submit}}
+        </div>
+    
+</form>
+</section>
+
+{% endblock content %}
