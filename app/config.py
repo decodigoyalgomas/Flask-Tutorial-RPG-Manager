@@ -1,13 +1,17 @@
 import os
 from pony.orm import *
 
+
+
 from models import db 
+import app
 
 
 
 class Config(object):
 	SECRET_KEY = os.urandom(46)
 	CSRF_ENABLED = True
+
 
 
 class DevConfig(Config):

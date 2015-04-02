@@ -20,7 +20,7 @@
 
 
 
-    <form method="POST" action="{{url_for('entry.register')}}">
+    <form method="POST" action="{{url_for('auth.register')}}">
     	{{ form.hidden_tag() }}
         <div class="small-12 medium-6 columns">
             {% for error in form.name.errors %}

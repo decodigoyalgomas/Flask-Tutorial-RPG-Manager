@@ -3,6 +3,8 @@ from datetime import time
 from datetime import timedelta
 from pony.orm import *
 
+from werkzeug.security import generate_password_hash, check_password_hash
+
 db = Database()
 
 class User(db.Entity):
@@ -10,10 +12,31 @@ class User(db.Entity):
     email = Required(unicode, unique=True)
     password = Required(unicode)
     name = Required(unicode)
-    nickname = Optional(unicode)
+    username = Optional(unicode, unique=True)
     parties = Set("Party")
     sessions = Set("Session")
     characters = Set("Character")
+
+    def __init__(self, username, password, name, email):
+        self.username = username
+        self.password = generate_password_hash(password)
+        self.name = name
+        self.email = email
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return unicode(self.id)
 
 
 class Party(db.Entity):

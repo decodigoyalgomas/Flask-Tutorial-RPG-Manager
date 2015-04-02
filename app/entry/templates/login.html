@@ -15,7 +15,7 @@
     {% endwith %}
 
 
-<form method="POST" action="{{url_for('entry.login')}}">
+<form method="POST" action="{{url_for('auth.login')}}">
 	{{ form.hidden_tag() }}
     <div>{{ form.username.label(class="columns small-6") }}: 
     {% for error in form.username.errors %}
