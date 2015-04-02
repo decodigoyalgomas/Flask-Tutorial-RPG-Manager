@@ -1,0 +1,18 @@
+{% extends "foundation/base.html" %}
+
+{% block content %}
+<div class="row">
+<h1 class="titulo">this is index</h1>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+</div>
+
+{% endblock content %}

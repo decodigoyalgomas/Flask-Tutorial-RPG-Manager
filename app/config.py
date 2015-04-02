@@ -7,6 +7,7 @@ from models import db
 
 class Config(object):
 	SECRET_KEY = os.urandom(46)
+	CSRF_ENABLED = True
 
 
 class DevConfig(Config):

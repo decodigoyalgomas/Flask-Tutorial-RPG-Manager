@@ -1,0 +1,25 @@
+{% extends "foundation/base.html" %}
+
+{% block content %}
+
+<section class="row">
+
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+
+<form method="POST" action="{{url_for('entry.login')}}">
+    <div>{{ form.username.label(class="columns small-6") }}: {{ form.username(class="columns small-6") }}</div>
+    <div>{{ form.password.label(class="columns small-6") }}: {{ form.password(class="columns small-6") }}</div>
+    <div class="columns small-6">{{ form.submit}}</div>
+</form>
+</section>
+
+{% endblock content %}

@@ -1,12 +1,28 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 
-entry = Blueprint("entry", __name__)
+from forms import LoginForm
+
+entry = Blueprint("entry", __name__, template_folder="templates")
 
 
-@entry.route("/login")
+@entry.route("/login", methods=["POST", "GET"])
 def login():
-	return "you did login"
+	form = LoginForm()
 
-@entry.route("/logout")
+	if form.validate_on_submit():
+		flash("Has hecho login con el user: {}".format(form.user.data))
+		print "validated"
+		return redirect(url_for("index"))
+	else:
+		print "not validated"
+		flash("Failed to login")
+
+	return render_template(
+		"login.html",
+		form=form,
+		
+	)
+
+@entry.route("/logout", methods=["POST", "GET"])
 def logout():
 	return "you did logout"
