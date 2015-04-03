@@ -1,0 +1,52 @@
+
+
+
+
+
+{% import "foundation/components.html" as components %}
+    
+
+    {% call   components.topbar(class="fixed") %}
+		<ul class="title-area">
+		    <li class="name">
+		      <h1><a href="#">RPG Manager</a></h1>
+		    </li>
+		     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+		    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		  </ul>
+		  <section class="top-bar-section">
+				<ul class="left">
+					<li class="has-dropdown">
+						<a href="{{url_for('manager.my_parties')}}">My Parties</a>
+						<ul class="dropdown">
+							<li><a href="{{url_for('manager.new_party')}}">Create Party</a></li>
+							<li><a href="{{url_for('manager.list_parties')}}">Join Party</a></li>
+						</ul>
+					</li>
+					<li class="has-dropdown">
+						<a href="{{url_for('manager.my_characters')}}">My Characters</a>
+						<ul class="dropdown">
+							<li><a href="{{url_for('manager.new_character')}}">Add Character</a></li>
+							<li><a href="{{url_for('manager.list_characters')}}">All Characters</a></li>
+						</ul>
+					</li>
+				</ul>
+		      	<!-- Right Nav Section -->
+		      	<ul class="right">
+					{% if not current_user.is_authenticated() %}
+
+					<li><a href="{{url_for('auth.register')}}">Hello Unknown, Join us!</a></li>
+					{% elif user %}
+						
+						<li><a>Hello, {{user.name}}</a></li>
+						<li><a href="{{url_for('auth.logout')}}">logout</a></li>
+					
+				
+					
+					{% endif %}
+		      	</ul>
+
+    {%      endcall %}
+
+
+

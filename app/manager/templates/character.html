@@ -1,5 +1,6 @@
 {% extends "foundation/base.html" %}
 
+
 {% block styles %}
 	{{ super()}}
 	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css')}}">
@@ -12,7 +13,7 @@
 
 {% block content %}
 <div class="row">
-<h1 class="titulo">this is index</h1>
+<h1 class="titulo">Showing your character: {{name}}</h1>
 	{% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul>

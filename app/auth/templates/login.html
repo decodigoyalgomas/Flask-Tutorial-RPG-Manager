@@ -1,5 +1,12 @@
 {% extends "foundation/base.html" %}
 
+{% import "foundation/components.html" as components%}
+
+
+{% block navbar %}
+    
+{% endblock navbar %}
+
 {% block content %}
 
 <section class="row">
@@ -17,14 +24,14 @@
 
 <form method="POST" action="{{url_for('auth.login')}}">
 	{{ form.hidden_tag() }}
-    <div>{{ form.username.label(class="columns small-6") }}: 
+    <div>{{ form.username.label(class="columns small-6") }}
     {% for error in form.username.errors %}
             <span class="error">[{{ error }}]</span>
           {% endfor %}<br>
     {{ form.username(class="columns small-6") }}
     </div>
-    <div>{{ form.password.label(class="columns small-6") }}: 
-    {% for error in form.password.errors %}
+    <div>{{ form.password.label(class="columns small-6") }}
+        {% for error in form.password.errors %}
             <span class="error">[{{ error }}]</span>
           {% endfor %}<br>
     {{ form.password(class="columns small-6") }}</div>
